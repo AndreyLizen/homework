@@ -9,6 +9,7 @@ while i <= lenght_of_list:
     my_list.append(input(f'Введите {i}й элемент списка из {lenght_of_list}: '))
     i += 1
 print(f'Полученный список: {my_list}')
+# Добавление измененного списка
 new_list = []
 i = 1
 while i <= lenght_of_list:
