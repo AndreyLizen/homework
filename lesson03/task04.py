@@ -15,3 +15,13 @@ def my_func(x, y):
     print(f'Число {x} в степени {y} равно: метод1: {case1:.4f}; метод2: {case2:.4f}')
 
 my_func(0.7623, -5)
+
+# def input_data():
+#     x = int(input("Введите число для возведения в отрицательную степень: "))
+#     while True:
+#         y = int(input("Введите целое отрицательное число степени: "))
+#         if y >= 0:
+#             continue
+#     my_func(x=x, y=y)
+#
+# input_data()
