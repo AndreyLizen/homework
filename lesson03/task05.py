@@ -6,15 +6,19 @@
 
 def sum_el():
     print("Данная программа подсчитывает сумму введенных через пробелы чисел.")
-    print('Для подсчета промежуточной суммы чисел нажмите "Enter".\nДля подсчета окончательной суммы и выхода из программы нажмите "Q".')
-    while True:
+    print('Для подсчета промежуточной суммы чисел нажмите "Enter".')
+    print('Для выхода из программы введите любой нецифровой символ.')
+    global summa
+    summa = 0
+    proceed = True
+    while proceed:
         my_list = input("Введите несколько чисел для суммирования, разделённых пробелами: ").split()
-        summa = 0
         for el in my_list:
             if not el.isdigit():
-                if "Q" in el:
-                    break
+                proceed = False
+                break
             summa = summa + int(el)
         print(f"Промежуточная сумма: {summa}")
-        continue
+    print(f"Программа закончила работу. Окончательная сумма: {summa}")
+
 sum_el()
