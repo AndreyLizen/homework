@@ -67,7 +67,7 @@ for i in m:
 
 from functools import reduce
 def my_f(el0, el1):
-    return el0 +el1
+    return el0 + el1
 print(reduce(my_f, [1,2,3,4,5]))
 
 from itertools import count, cycle
