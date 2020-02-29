@@ -4,3 +4,18 @@
 # первые n чисел, начиная с 1! и до n!.
 # Подсказка: факториал числа n — произведение чисел от 1 до n.
 # Например, факториал четырёх 4! = 1 * 2 * 3 * 4 = 24.
+
+from math import factorial
+
+def fact(n):
+    for i in range(1, n + 1):
+        yield i, factorial(i)
+
+while True:
+    n = input('Введите целое положительное число "n" для генерации последовательности факториалов с 1! до n! : ')
+    if n.isdigit():
+        break
+
+for ind, el in fact(n=int(n)):
+    print(f"Результат вычисления {ind}! = {el}")
+

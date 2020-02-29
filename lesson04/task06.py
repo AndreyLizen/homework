@@ -15,4 +15,4 @@ for i in count(5, 5):
     if i > 30:
         break
     else:
-        print(next(iteration))
+        print(i, next(iteration))
