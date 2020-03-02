@@ -67,7 +67,19 @@ for i in m:
 
 from functools import reduce
 def my_f(el0, el1):
-    return el0 +el1
+    return el0 + el1
 print(reduce(my_f, [1,2,3,4,5]))
 
 from itertools import count, cycle
+
+# for el in count(7, 3):
+#     if el > 15:
+#         break
+#     else:
+#         print(el)
+# c = 0
+# for el in cycle("ABC"):
+#     if c > 10:
+#         break
+#     print(el)
+#     c += 1
