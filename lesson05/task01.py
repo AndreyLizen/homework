@@ -8,6 +8,3 @@ with open("task01_file.txt", "w", encoding='utf-8') as f:
         if new_str == '':
             break
         f.write(f'{new_str}\n')
-
-
-
