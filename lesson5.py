@@ -20,15 +20,15 @@
 # fool.writelines(["Hello,\n", "Pyton!\n"])
 # fool.close()
 #
-# try:
-#     with open("test1.txt") as fool:
-#         print(type(fool))
-#         for i in fool:
-#             print(i)
-# except IOError:
-#     print("Ошибка!")
-# finally:
-#     print("ого")
+try:
+    with open("test1.txt") as fool:
+        print(type(fool))
+        for i in fool:
+            print(i)
+except IOError:
+    print("Ошибка!")
+finally:
+    print("ого")
 
 # состояния:
 # print("Файл. Имя: ", fool.name)
@@ -38,7 +38,7 @@
 # import os
 # print(os.listdir())
 
-import json
-data = {"income": {"salary": 50000, "bonus": 20000}}
-with open("my_json", 'w'):
-    json.dump(data, fool)
+# import json
+# data = {"income": {"salary": 50000, "bonus": 20000}}
+# with open("my_json", 'w'):
+#     json.dump(data, fool)
