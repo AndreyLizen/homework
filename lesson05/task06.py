@@ -8,7 +8,7 @@
 # Пример словаря: {“Информатика”: 170, “Физика”: 40, “Физкультура”: 30}
 
 print("Программа считывает данные из файла и формирует словарь с предметами и суммарными часами обучения.")
-f = open("task06_file.txt", "r")
+f = open("task06_file.txt", "r", encoding='utf-8')
 new_dict = {}
 while True:
     new_str = f.readline()
@@ -21,9 +21,4 @@ while True:
         val = val + int(new_str_list[i])
     new_dict[new_str_list[0]] = val
 print(f"Итоговый словарь: {new_dict}")
-
-#     for key, val in dict_for_translate.items():
-#         if int(new_str_list[1]) == val:
-#             g.write(f'{key:<8} - {val}\n')
-#             print(f'{key} - {val}')
-# f.close()
+f.close()
