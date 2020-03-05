@@ -40,5 +40,5 @@ finally:
 
 # import json
 # data = {"income": {"salary": 50000, "bonus": 20000}}
-# with open("my_json", 'w'):
+# with open("my_json.json", 'w') as fool:
 #     json.dump(data, fool)
