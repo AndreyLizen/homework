@@ -42,3 +42,5 @@ finally:
 # data = {"income": {"salary": 50000, "bonus": 20000}}
 # with open("my_json.json", 'w') as fool:
 #     json.dump(data, fool)
+
+json.dump(all_list, j_file, ensure_ascii=False, indent=4)
