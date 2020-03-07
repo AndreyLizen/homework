@@ -8,24 +8,30 @@
 # Задачу можно усложнить, реализовав проверку порядка режимов, и при его нарушении выводить
 # соответствующее сообщение и завершать скрипт.
 
+from itertools import cycle
+from time import sleep
 
-import time
 
 class TrafficLight:
     def __init__(self, color):
         self.__color = color
 
     def running(self):
-        print(f"Цвет светофора: {self.__color}")
+        iteration = cycle(self.__color)
         while True:
-            print("\033[31m {}\033[0m".format("Красный"))
-            time.sleep(7)
-            print("\033[33m {}\033[0m".format("Жёлтый"))
-            time.sleep(2)
-            print("\033[32m {}\033[0m".format("Зелёный"))
-            time.sleep(11)
+            print("Цвет светофора:", "\033[1m\033[31m {}\033[0m".format(next(iteration)))
+            sleep(7)
+            print("Цвет светофора:", "\033[1m\033[33m {}\033[0m".format(next(iteration)))
+            sleep(2)
+            print("Цвет светофора:", "\033[1m\033[32m {}\033[0m".format(next(iteration)))
+            sleep(11)
+            if input("Для продолжения нажмите 'Enter:") == "":
+                continue
+            else:
+                print("\033[1m\033[30m\033[47m {}\033[0m".format("Программа завершена!"))
+                break
 
 
-r = TrafficLight("red")
+r = TrafficLight(color=["Красный", "Жёлтый", "Зелёный"])
 r.running()
 
