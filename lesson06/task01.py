@@ -25,7 +25,7 @@ class TrafficLight:
             sleep(2)
             print("Цвет светофора:", "\033[1m\033[32m {}\033[0m".format(next(iteration)))
             sleep(11)
-            if input("Для продолжения нажмите 'Enter:") == "":
+            if input("Для продолжения нажмите 'Enter':") == "":
                 continue
             else:
                 print("\033[1m\033[30m\033[47m {}\033[0m".format("Программа завершена!"))
