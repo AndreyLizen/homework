@@ -6,7 +6,7 @@
 
 
 class Stationery:
-    def __init__(self, title):
+    def __init__(self, title='Общий'):
         self.title = title
 
     def draw(self):
@@ -28,11 +28,11 @@ class Handle(Stationery):
         print("Запуск отрисовки. Метод 'Маркер'.")
 
 
-s = Stationery('Общий')
+s = Stationery()
 s.draw()
-p = Pen('Общий')
+p = Pen()
 p.draw()
-q = Pencil('Общий')
+q = Pencil()
 q.draw()
-h = Handle('Общий')
+h = Handle()
 h.draw()
