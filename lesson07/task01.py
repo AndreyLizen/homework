@@ -6,23 +6,44 @@
 # Подсказка: сложение элементов матриц выполнять поэлементно — первый элемент первой строки
 # первой матрицы складываем с первым элементом первой строки второй матрицы и т.д.
 
+
 class Matrix:
     def __init__(self, matrix):
         self.matrix = matrix
 
-
-    # def __add__(self, other):
-    #     return MyClass1(self.param1 + other.param1, self.param2 + other.param2)
+    def __add__(self, other):
+        try:
+            result = []
+            stop = False
+            for row in range(len(self.matrix)):
+                if len(self.matrix) != len(other.matrix) or stop:  # Проверка соответствия размерности матрицы
+                    break
+                result.append([])
+                for x in range(len(self.matrix[row])):
+                    if len(self.matrix[row]) != len(other.matrix[row]):  # Проверка соответствия размерности матрицы
+                        stop = True
+                        break
+                    result[row].append(0)
+                    result[row][x] = self.matrix[row][x] + other.matrix[row][x]
+            if len(self.matrix) != len(other.matrix) or stop:
+                print("\033[1m\033[31m{}\033[0m".format(
+                    "Математически сложение матриц имеет смысл только для идентичных по размерности матриц! Исправьте вводные данные!"))
+            else:
+                return Matrix(result)
+        except TypeError:
+            print("\033[1m\033[31m{}\033[0m".format(
+                "Складывать можно только числа! Проверьте и исправьте вводные данные!"))
 
     def __str__(self):
         for row in range(len(self.matrix)):
-            print((self.matrix[row][x] for x in range(len(self.matrix[row]))), end='')
+            for x in range(len(self.matrix[row])):
+                print(self.matrix[row][x], end=' ')
+            print()
+        print()
 
 
-m1 = Matrix([[1,2],[3,4]])
-
-print().__str__()
-
-m2 = [1, 2]
-for i in m2:
-    print(str(i) + " ", end='')
+m1 = Matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]])
+m2 = Matrix([[9, 8, 7], [6, 5, 4], [3, 2, 1], [0, -1, -2]])
+m1.__str__()
+m2.__str__()
+(m1 + m2).__str__()
