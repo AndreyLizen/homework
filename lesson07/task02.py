@@ -6,3 +6,49 @@
 # для костюма (2*H + 0.3). Проверить работу этих методов на реальных данных. Реализовать общий подсчет
 # расхода ткани. Проверить на практике полученные на этом уроке знания: реализовать абстрактные классы
 # для основных классов проекта, проверить на практике работу декоратора @property.
+
+from abc import ABC, abstractmethod
+
+
+class Clothes(ABC):
+
+    def __init__(self, V, H):
+        self.V = V
+        self.H = H
+
+    @abstractmethod
+    def tissue_consumption(self):
+        pass
+
+
+class Coat(Clothes):
+
+    def __init__(self, V, H):
+        super().__init__(V, H)
+
+    def __str__(self):
+        return f"Расход ткани на пальто: {self.tissue_consumption} кв.ед."
+
+    @property
+    def tissue_consumption(self):
+        return round((self.V / 6.5 + 0.5), 2)
+
+
+class Suit(Clothes):
+
+    def __init__(self, V, H):
+        super().__init__(V, H)
+
+    def __str__(self):
+        return f"Расход ткани на костюм: {self.tissue_consumption} кв.ед."
+
+    @property
+    def tissue_consumption(self):
+        return round((2 * self.H + 0.3), 2)
+
+
+c = Coat(54, 0)
+print(c)
+s = Suit(0, 4.44)
+print(s)
+print(f"Суммарный расход ткани: {(c.tissue_consumption + s.tissue_consumption):.2f} кв.ед.")
