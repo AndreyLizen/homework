@@ -22,3 +22,47 @@
 # Или, количество ячеек клетки равняется 15, количество ячеек в ряду — 5. Тогда метод make_order()
 # вернет строку: *****\n*****\n*****.
 # Подсказка: подробный список операторов для перегрузки доступен по ссылке.
+
+
+class Cell:
+    def __init__(self, element):
+        self.element = element
+
+    def __add__(self, other):
+        return f"Результат суммирования: {Cell(self.element + other.element)}"
+
+    def __sub__(self, other):
+        if self.element <= other.element:
+            return "\033[1m\033[31m{}\033[0m".format("Вычитание невозможно! Количество ячеек не может быть отрицательным!")
+        else:
+            return f"Результат вычитания: {Cell(self.element - other.element)}"
+
+    def __mul__(self, other):
+        return f"Результат умножения: {Cell(self.element * other.element)}"
+
+    def __truediv__(self, other):
+        return f"Результат целочисленного деления: {Cell(self.element // other.element)}"
+
+    def __str__(self):
+        if self.element < 0:
+            return "\033[1m\033[31m{}\033[0m".format("Количество ячеек не может быть отрицательным! Исправьте вводные данные!")
+        else:
+            return f"Клетка с количеством ячеек {self.element}."
+
+    def make_order(self, row):
+        total_row = self.element
+        while row <= total_row:
+            total_row = total_row - row
+            print("*" * row)
+        print("*" * total_row)
+
+
+c1 = Cell(17)
+c2 = Cell(15)
+print(c1)
+print(c2)
+print(c1 + c2)
+print(c1 - c2)
+print(c1 * c2)
+print(c1 / c2)
+c1.make_order(5)
