@@ -55,6 +55,7 @@ class Cell:
             total_row = total_row - row
             print("*" * row)
         print("*" * total_row)
+        # print("\n".join(["*" * row for i in range(self.element // row)]) + "\n" + "*" * (self.element % row))
 
 
 c1 = Cell(17)

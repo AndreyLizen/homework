@@ -27,15 +27,20 @@ class Matrix:
                     result[row][x] = self.matrix[row][x] + other.matrix[row][x]
             if len(self.matrix) != len(other.matrix) or stop:
                 print("\033[1m\033[31m{}\033[0m".format(
-                    "Математически сложение матриц имеет смысл только для идентичных по размерности матриц! Исправьте вводные данные!"))
+                    "Математически сложение матриц имеет смысл только для идентичных по "
+                    "размерности матриц! Исправьте вводные данные!"))
             else:
                 return Matrix(result)
         except TypeError:
             print("\033[1m\033[31m{}\033[0m".format(
                 "Складывать можно только числа! Проверьте и исправьте вводные данные!"))
+        # return Matrix([self.matrix[i][j] + other.matrix[i][j] for i in range(len(self.matrix))]
+        #               for j in range(len(self.matrix[0])))
 
     def __str__(self):
         return str(self.print_matrix()).replace("None", "")
+        # return '\n'.join(map(str, self.matrix))
+        # return str('\n'.join(['\t'.join(str(i) for i in j) for j in self.matrix]))
 
     def print_matrix(self):
         for row in range(len(self.matrix)):
@@ -49,4 +54,3 @@ m2 = Matrix([[9, 8, 7], [6, 5, 4], [3, 2, 1], [0, -1, -2]])
 print(m1)
 print(m2)
 print(m1 + m2)
-
