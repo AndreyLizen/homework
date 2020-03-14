@@ -9,3 +9,30 @@
 # его в список, только если введено число. Класс-исключение должен не позволить пользователю ввести
 # текст (не число) и отобразить соответствующее сообщение. При этом работа скрипта не должна завершаться.
 
+
+class OwnError(Exception):
+    def __init__(self, txt):
+        self.txt = txt
+
+
+def check_el():
+    print("Данная программа контролирует ввод данных.")
+    print('Для вывода списка чисел и выхода из программы введите через пробел символ "q".')
+    proceed = True
+    total_list = []
+    while proceed:
+        try:
+            my_list = input("Вводите числа, разделяя их пробелами: ").split()
+            for el in my_list:
+                if el == 'q':
+                    proceed = False
+                    break
+                elif not el.isdigit():
+                    raise OwnError("Вы ввели не число! Последующие числа данного цикла ввода учтены не будут! Попробуйте ещё раз!")
+                total_list.append(int(el))
+        except OwnError as error:
+            print(error)
+    print(f"Программа закончила работу. Полученный список: {total_list}")
+
+
+check_el()
