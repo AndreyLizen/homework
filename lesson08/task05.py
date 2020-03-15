@@ -2,12 +2,13 @@
 # и передачу в определенное подразделение компании. Для хранения данных о наименовании и количестве единиц
 # оргтехники, а также других данных, можно использовать любую подходящую структуру, например словарь.
 
+
 in_storage = []
 out_storage = []
 
 
 class Warehouse:
-    def __init__(self, type_of_eq, name, quantity, measure):
+    def __init__(self, name, quantity, measure, type_of_eq):
         self.type_of_eq = type_of_eq
         self.name = name
         self.quantity = quantity
@@ -17,7 +18,6 @@ class Warehouse:
 
     def acceptance(self, number):
         in_storage.append([number, self.position])
-
         return "Принято на хранение: {}.\nОбщий перечень объектов на хранении:\n{}".format(self.position, '\n'.join(map(str, in_storage)))
 
     def out_of_stock(self):
@@ -29,38 +29,36 @@ class Warehouse:
         return "Выбыло со склада: {}.\nОбщий перечень выданных объектов:\n{}".format(self.position, '\n'.join(map(str, out_storage)))
 
 
-class OfficeEquipment:
-    def __init__(self, name, price, quantity, measure, type_of_eq):
-        self.name = name
+class OfficeEquipment(Warehouse):
+    def __init__(self, name, quantity, measure, type_of_eq, price):
+        super().__init__(name,  quantity, measure, type_of_eq)
         self.price = price
-        self.quantity = quantity
-        self.measure = measure
-        self.type_of_eq = type_of_eq
 
 
 class Printer(OfficeEquipment):
-    def __init__(self, name, price, quantity, measure, is_color):
-        super().__init__(name, price, quantity, measure, type_of_eq='Принтер')
+    def __init__(self, name, quantity, measure, price, is_color, type_of_eq="Принтер"):
+        super().__init__(name, quantity, measure, type_of_eq, price)
         self.is_color = is_color
 
 
 class Scanner(OfficeEquipment):
-    def __init__(self, name, price, quantity, measure, type_of_scanning):
-        super().__init__(name, price, quantity, measure, type_of_eq='Сканер')
+    def __init__(self, name, quantity, measure, price, type_of_scanning, type_of_eq="Сканер"):
+        super().__init__(name, quantity, measure, type_of_eq, price)
         self.type_of_scanning = type_of_scanning
 
 
 class Xerox(OfficeEquipment):
-    def __init__(self, name, price, quantity, measure, is_big):
-        super().__init__(name, price, quantity, measure, type_of_eq='Ксерокс')
+    def __init__(self, name, quantity, measure, price, is_big, type_of_eq="Ксерокс"):
+        super().__init__(name, quantity, measure, type_of_eq, price)
         self.is_big = is_big
 
 
-w = Warehouse("Принтер", "Canon", 5, "шт.")
-w1 = Warehouse("Сканер", "HP", 10, "шт.")
-w2 = Warehouse("Ксерокс", "Xerox", 15, "шт.")
-w.acceptance(1)
-w1.acceptance(2)
-print(w2.acceptance(3))
-print(w1.out_of_stock())
+p = Printer("Canon", 5, "шт.", 5000, True)
+s = Scanner("HP", 10, "шт.", 10000, "DRK-120")
+x = Xerox("Xerox", 15, "шт.", 50000, True)
+p.acceptance(1)
+s.acceptance(2)
+print(x.acceptance(3))
+print(s.out_of_stock())
 print("Общий перечень объектов на хранении:\n{}".format('\n'.join(map(str, in_storage))))
+
