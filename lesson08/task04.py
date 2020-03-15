@@ -5,12 +5,13 @@
 
 
 class Warehouse:
-    def __init__(self, name, quantity, measure, type_of_eq, in_storage):
+    def __init__(self, type_of_eq, name, quantity, measure):
+        self.type_of_eq = type_of_eq
         self.name = name
         self.quantity = quantity
         self.measure = measure
-        self.type_of_eq = type_of_eq
-        self.in_storage = in_storage
+        self.position = {"Тип оборудования": self.type_of_eq, "Название": self.name, "Количество": self.quantity,
+                         "Ед. измерения": self.measure}
 
 
 class OfficeEquipment:
